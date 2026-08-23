@@ -1,0 +1,795 @@
+/* ============================================================
+   Welvura — Velvura-Тест1  (структура и шрифты — с Lucky Bear)
+   Порядок: tokens.css → palette-welvura.css → style.css
+   Тема: тёмная / фиолетовый акцент бренда
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  font-family: var(--lb-font-body);
+  color: var(--wv-text);
+  background: var(--wv-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, svg { max-width: 100%; height: auto; display: block; }
+
+/* SEO: скрытые семантические заголовки для скринридеров */
+.lb-sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Фон-слой (без background-attachment: fixed) */
+.page-bg {
+  position: fixed; inset: 0; z-index: -1;
+  background:
+    radial-gradient(1200px 700px at 20% -10%, rgba(163, 78, 244, 0.22) 0%, transparent 60%),
+    radial-gradient(900px 600px at 100% 110%, rgba(53, 102, 251, 0.18) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(10, 15, 30, 0.72) 0%, rgba(10, 15, 30, 0.88) 100%),
+    url("../assets/bg/bg.png") center / cover no-repeat;
+  pointer-events: none;
+  transform: translateZ(0);
+}
+
+/* Каркас */
+.page { min-height: 100vh; display: flex; flex-direction: column; }
+.page__main { flex: 1; }
+
+.section { padding: 48px 0; }
+.section--tight { padding: 32px 0; }
+.section--games { padding: 24px 0 40px; }
+
+@media (max-width: 720px) {
+  .section { padding: 32px 0; }
+  .section--games { padding: 16px 0 24px; }
+}
+
+/* ============================================================
+   Шапка — 04-compact-pill (тёмный сурфейс, фиолетовый hover)
+   ============================================================ */
+.lb-header-pill {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px 24px;
+}
+
+.lb-header-pill__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 14px 10px 18px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--wv-surface-2) 0%, var(--wv-surface) 100%);
+  box-shadow:
+    0 12px 32px rgba(6, 8, 20, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(159, 143, 248, 0.16);
+}
+
+.lb-header-pill__brand { display: flex; align-items: center; text-decoration: none; }
+.lb-header-pill__img {
+  height: 30px; width: auto; object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(159, 143, 248, 0.35));
+}
+
+.lb-header-pill__nav { display: flex; align-items: center; gap: 22px; }
+.lb-header-pill__link {
+  font-family: var(--lb-font-body);
+  font-size: 13px;
+  color: var(--wv-text);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color 0.2s ease;
+}
+.lb-header-pill__link:hover { color: var(--wv-accent); }
+
+.lb-header-pill__btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 38px;
+  padding: 0 22px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--wv-accent) 0%, var(--wv-accent-hot) 100%);
+  color: #ffffff;
+  font-family: var(--lb-font-body);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  box-shadow:
+    0 8px 22px rgba(163, 78, 244, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.20);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.lb-header-pill__btn:hover { transform: translateY(-1px); filter: brightness(1.08); }
+
+@media (max-width: 700px) {
+  .lb-header-pill__nav { display: none; }
+}
+
+/* ============================================================
+   Главная — 03-center-welcome (адаптирована под Welvura)
+   ============================================================ */
+.lb-hero-welcome {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 24px 48px;
+  text-align: center;
+  position: relative;
+}
+
+.lb-hero-welcome__glow {
+  position: absolute;
+  left: 50%; top: 20px;
+  transform: translateX(-50%);
+  width: min(560px, 92%);
+  height: 300px;
+  background: radial-gradient(ellipse at center, rgba(163, 78, 244, 0.35) 0%, rgba(163, 78, 244, 0) 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.lb-hero-welcome__logo {
+  position: relative; z-index: 1;
+  width: min(180px, 42%);
+  height: auto;
+  margin: 0 auto 22px;
+  filter: drop-shadow(0 16px 34px rgba(232, 200, 106, 0.35))
+          drop-shadow(0 0 20px rgba(163, 78, 244, 0.30));
+}
+
+.lb-hero-welcome__title {
+  position: relative; z-index: 1;
+  margin: 0 0 16px;
+  font-family: var(--lb-font-display);
+  font-size: clamp(28px, 4.6vw, 48px);
+  font-weight: 700;
+  line-height: 1.12;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.lb-hero-welcome__title-dark { display: block; color: var(--wv-text); }
+.lb-hero-welcome__title-blue {
+  display: block;
+  background: linear-gradient(180deg, #C6BAFF 0%, var(--wv-accent) 50%, var(--wv-accent-hot) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.lb-hero-welcome__text {
+  position: relative; z-index: 1;
+  margin: 0 auto 28px;
+  max-width: 620px;
+  font-family: var(--lb-font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--wv-text-soft);
+}
+
+.lb-hero-welcome__buttons {
+  position: relative; z-index: 1;
+  display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
+}
+
+.lb-hero-welcome__btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 48px;
+  padding: 0 26px;
+  border-radius: 999px;
+  font-family: var(--lb-font-body);
+  font-size: 15px;
+  text-decoration: none;
+  transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+  font-weight: 600;
+}
+.lb-hero-welcome__btn:hover { transform: translateY(-1px); }
+
+.lb-hero-welcome__btn--fill {
+  background: linear-gradient(180deg, var(--wv-accent) 0%, var(--wv-accent-hot) 100%);
+  color: #ffffff;
+  border: 2px solid var(--wv-accent);
+  box-shadow: 0 10px 26px rgba(163, 78, 244, 0.42);
+}
+.lb-hero-welcome__btn--fill:hover { filter: brightness(1.08); }
+
+.lb-hero-welcome__btn--outline {
+  background: transparent;
+  color: var(--wv-text);
+  border: 2px solid rgba(159, 143, 248, 0.55);
+}
+.lb-hero-welcome__btn--outline:hover {
+  border-color: var(--wv-accent);
+  color: var(--wv-accent);
+  background: rgba(159, 143, 248, 0.08);
+}
+
+/* ============================================================
+   Слайдер игр — full-bleed marquee (реальные игры Welvura)
+   ============================================================ */
+.wv-slider { width: 100%; overflow: hidden; }
+
+.wv-slider__track {
+  display: flex;
+  width: max-content;
+  animation: wv-marquee 46s linear infinite;
+}
+
+.wv-slider__group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 10px;
+  flex-shrink: 0;
+}
+
+.wv-slider__item {
+  width: 180px;
+  height: 180px;
+  border-radius: 24px;
+  flex-shrink: 0;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--wv-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 10px 24px rgba(6, 8, 20, 0.45);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid rgba(159, 143, 248, 0.15);
+}
+.wv-slider__item:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 14px 32px rgba(6, 8, 20, 0.55), 0 0 26px rgba(163, 78, 244, 0.42);
+  border-color: rgba(159, 143, 248, 0.45);
+}
+
+.wv-slider__item--icon {
+  flex-direction: column;
+  gap: 14px;
+  background: linear-gradient(160deg, #1F1A3A 0%, #141B2E 60%, #10091b 100%);
+  padding: 22px 16px;
+}
+
+.wv-slider__icon {
+  width: 66px; height: 66px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(140deg, rgba(163, 78, 244, 0.28) 0%, rgba(53, 102, 251, 0.14) 100%);
+  box-shadow: inset 0 0 0 1px rgba(159, 143, 248, 0.35), 0 6px 16px rgba(163, 78, 244, 0.25);
+}
+.wv-slider__icon img {
+  width: 40px; height: 40px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.wv-slider__label {
+  font-family: var(--lb-font-display);
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--wv-text);
+}
+
+@keyframes wv-marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wv-slider__track { animation-duration: 200s; }
+}
+
+@media (max-width: 640px) {
+  .wv-slider__item { width: 150px; height: 150px; border-radius: 20px; }
+  .wv-slider__icon { width: 54px; height: 54px; }
+  .wv-slider__icon img { width: 32px; height: 32px; }
+  .wv-slider__label { font-size: 13px; }
+}
+
+/* ============================================================
+   Акции Welvura — сетка карточек
+   ============================================================ */
+.wv-promo {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.wv-promo__title {
+  margin: 0 0 14px;
+  text-align: center;
+  font-family: var(--lb-font-display);
+  font-size: clamp(28px, 4.4vw, 44px);
+  font-weight: 700;
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.wv-promo__title-dark { color: var(--wv-text); }
+.wv-promo__title-blue {
+  background: linear-gradient(180deg, #C6BAFF 0%, var(--wv-accent) 50%, var(--wv-accent-hot) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.wv-promo__lead {
+  margin: 0 auto 32px;
+  max-width: 720px;
+  text-align: center;
+  font-family: var(--lb-font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--wv-text-soft);
+}
+
+.wv-promo__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.wv-promo__card {
+  position: relative;
+  background: linear-gradient(160deg, var(--wv-panel) 0%, var(--wv-surface) 60%, #10091b 100%);
+  border: 1px solid rgba(159, 143, 248, 0.16);
+  border-radius: 24px;
+  padding: 22px 22px 24px;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 12px 32px rgba(6, 8, 20, 0.42);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.wv-promo__card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(159, 143, 248, 0.4);
+  box-shadow: 0 18px 40px rgba(6, 8, 20, 0.55), 0 0 24px rgba(163, 78, 244, 0.22);
+}
+
+.wv-promo__card--hero {
+  background: linear-gradient(160deg, #2A1F5A 0%, #1F2340 55%, #0F0C22 100%);
+  border-color: rgba(163, 78, 244, 0.5);
+  box-shadow: 0 20px 44px rgba(6, 8, 20, 0.55), 0 0 32px rgba(163, 78, 244, 0.28);
+}
+
+.wv-promo__tag {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--wv-accent) 0%, var(--wv-accent-hot) 100%);
+  color: #ffffff;
+  font-family: var(--lb-font-body);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  box-shadow: 0 6px 16px rgba(163, 78, 244, 0.35);
+}
+.wv-promo__tag--alt {
+  background: rgba(159, 143, 248, 0.15);
+  color: var(--wv-accent);
+  box-shadow: none;
+  border: 1px solid rgba(159, 143, 248, 0.35);
+}
+
+.wv-promo__card-title {
+  margin: 4px 0 0;
+  font-family: var(--lb-font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--wv-text);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+}
+.wv-promo__card--hero .wv-promo__card-title {
+  font-size: 26px;
+  color: #F0EBFF;
+}
+
+.wv-promo__card-sub {
+  margin: 0;
+  font-family: var(--lb-font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--wv-text-soft);
+  flex: 1;
+}
+
+.wv-promo__btn {
+  align-self: flex-start;
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 26px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--wv-accent) 0%, var(--wv-accent-hot) 100%);
+  color: #ffffff;
+  font-family: var(--lb-font-body);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(163, 78, 244, 0.4);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.wv-promo__btn:hover { transform: translateY(-1px); filter: brightness(1.08); }
+
+.wv-promo__link {
+  align-self: flex-start;
+  margin-top: 4px;
+  font-family: var(--lb-font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--wv-accent);
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.wv-promo__link:hover { color: #C6BAFF; transform: translateX(2px); }
+
+@media (max-width: 900px) { .wv-promo__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .wv-promo__grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   SEO / убедительный текст
+   ============================================================ */
+.wv-seo {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.wv-seo__title {
+  margin: 0 0 24px;
+  text-align: center;
+  font-family: var(--lb-font-display);
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: 700;
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.wv-seo__title-dark { color: var(--wv-text); }
+.wv-seo__title-blue {
+  background: linear-gradient(180deg, #C6BAFF 0%, var(--wv-accent) 50%, var(--wv-accent-hot) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.wv-seo__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  background: linear-gradient(160deg, var(--wv-panel) 0%, var(--wv-surface) 55%, #10091b 100%);
+  border: 1px solid rgba(159, 143, 248, 0.16);
+  border-radius: 32px;
+  padding: 36px 36px 32px;
+  box-shadow: 0 20px 44px rgba(6, 8, 20, 0.42);
+}
+
+.wv-seo__col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.wv-seo__h3 {
+  margin: 8px 0 0;
+  font-family: var(--lb-font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--wv-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.wv-seo__col p {
+  margin: 0;
+  font-family: var(--lb-font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--wv-text);
+}
+.wv-seo__col p strong { color: #C6BAFF; font-weight: 600; }
+
+.wv-seo__list {
+  margin: 0;
+  padding: 0 0 0 4px;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+.wv-seo__list li {
+  position: relative;
+  padding-left: 22px;
+  font-family: var(--lb-font-body);
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--wv-text-soft);
+}
+.wv-seo__list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 10px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, var(--wv-accent) 0%, var(--wv-accent-hot) 100%);
+  box-shadow: 0 0 10px rgba(163, 78, 244, 0.55);
+}
+.wv-seo__list li strong { color: var(--wv-text); font-weight: 600; }
+
+.wv-seo__list--num {
+  counter-reset: wvstep;
+}
+.wv-seo__list--num li::before {
+  counter-increment: wvstep;
+  content: counter(wvstep);
+  width: 22px; height: 22px;
+  top: 2px;
+  border-radius: 8px;
+  background: linear-gradient(180deg, var(--wv-accent) 0%, var(--wv-accent-hot) 100%);
+  color: #ffffff;
+  font-family: var(--lb-font-body);
+  font-size: 12px;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 12px rgba(163, 78, 244, 0.35);
+}
+.wv-seo__list--num li { padding-left: 34px; }
+
+.wv-seo__note {
+  padding: 16px 18px;
+  border-left: 3px solid var(--wv-accent);
+  background: rgba(159, 143, 248, 0.08);
+  border-radius: 0 14px 14px 0;
+  color: var(--wv-text-soft) !important;
+  font-style: italic;
+}
+
+.wv-seo__cta { margin-top: 6px; }
+.wv-seo__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  padding: 0 32px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--wv-accent) 0%, var(--wv-accent-hot) 100%);
+  color: #ffffff;
+  font-family: var(--lb-font-body);
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  box-shadow: 0 12px 30px rgba(163, 78, 244, 0.42);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.wv-seo__btn:hover { transform: translateY(-1px); filter: brightness(1.08); }
+
+@media (max-width: 860px) {
+  .wv-seo__grid { grid-template-columns: 1fr; padding: 26px 22px; gap: 22px; }
+}
+
+/* ============================================================
+   Преимущества — 03-dark-grid (акцент = фиолет Welvura)
+   ============================================================ */
+.lb-adv-dark {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.lb-adv-dark__title {
+  margin: 0 0 36px;
+  text-align: center;
+  font-family: var(--lb-font-display);
+  font-size: clamp(26px, 4.4vw, 44px);
+  font-weight: 700;
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.lb-adv-dark__title-dark { display: block; color: var(--wv-text); }
+.lb-adv-dark__title-blue {
+  display: block;
+  background: linear-gradient(180deg, #C6BAFF 0%, var(--wv-accent) 50%, var(--wv-accent-hot) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.lb-adv-dark__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.lb-adv-dark__card {
+  background: linear-gradient(145deg, var(--wv-panel) 0%, var(--wv-surface) 55%, #10091b 100%);
+  border-radius: 28px;
+  padding: 22px 22px 26px;
+  min-height: 210px;
+  box-shadow: 0 12px 32px rgba(6, 8, 20, 0.45);
+  border: 1px solid rgba(159, 143, 248, 0.14);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.lb-adv-dark__card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(159, 143, 248, 0.35);
+  box-shadow: 0 16px 40px rgba(6, 8, 20, 0.55), 0 0 24px rgba(163, 78, 244, 0.20);
+}
+
+.lb-adv-dark__head {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 16px;
+}
+
+.lb-adv-dark__icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(140deg, rgba(163, 78, 244, 0.22) 0%, rgba(53, 102, 251, 0.10) 100%);
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  color: var(--wv-accent);
+  box-shadow:
+    inset 0 0 0 1px rgba(159, 143, 248, 0.45),
+    0 6px 16px rgba(163, 78, 244, 0.20);
+}
+.lb-adv-dark__icon svg { width: 24px; height: 24px; display: block; }
+
+.lb-adv-dark__card-title {
+  margin: 0;
+  font-family: var(--lb-font-display);
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 700;
+  color: var(--wv-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.lb-adv-dark__card-text {
+  margin: 0;
+  font-family: var(--lb-font-body);
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--wv-text);
+}
+
+@media (max-width: 900px) { .lb-adv-dark__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .lb-adv-dark__grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   Подвал — 01-center-logo (тёмный)
+   ============================================================ */
+.lb-footer-center {
+  width: 100%;
+  text-align: center;
+  padding: 48px 24px 32px;
+  color: var(--wv-text-soft);
+}
+.lb-footer-center__logo {
+  height: 34px; width: auto;
+  margin: 0 auto 18px;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 24px rgba(163, 78, 244, 0.30));
+}
+.lb-footer-center__disclaimer,
+.lb-footer-center__copy {
+  margin: 0 0 8px;
+  font-family: var(--lb-font-body);
+  font-size: 13px;
+  color: var(--wv-text-soft);
+}
+.lb-footer-center__copy { font-size: 12px; opacity: 0.75; }
+
+/* ============================================================
+   Модалка — 01-bonus-modal (welvura violet gradient)
+   ============================================================ */
+.lb-modal {
+  position: fixed; inset: 0; z-index: 1000;
+  display: none; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.lb-modal.is-open { display: flex; }
+
+.lb-modal__overlay {
+  position: absolute; inset: 0;
+  background: rgba(6, 8, 20, 0.72);
+}
+
+.lb-modal__card {
+  position: relative; z-index: 1;
+  width: min(420px, 100%);
+  border-radius: 28px;
+  padding: 34px 28px 28px;
+  background: linear-gradient(160deg, #A34EF4 0%, #7C6BF0 55%, #3566FB 100%);
+  color: #ffffff;
+  text-align: center;
+  box-shadow:
+    0 22px 54px rgba(6, 8, 20, 0.45),
+    0 0 40px rgba(163, 78, 244, 0.36);
+}
+
+.lb-modal__close {
+  position: absolute; top: 12px; right: 14px;
+  width: 36px; height: 36px;
+  border: 0; border-radius: 50%;
+  background: rgba(6, 8, 20, 0.30);
+  color: #ffffff;
+  font-size: 22px; line-height: 1;
+  cursor: pointer;
+}
+
+.lb-modal__eyebrow {
+  margin: 0 0 10px;
+  font-family: var(--lb-font-body);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.92;
+}
+
+.lb-modal__title {
+  margin: 0 0 12px;
+  font-family: var(--lb-font-display);
+  font-size: clamp(28px, 5vw, 36px);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.lb-modal__text {
+  margin: 0 0 22px;
+  font-family: var(--lb-font-body);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.lb-modal__btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 46px;
+  padding: 0 30px;
+  border-radius: 999px;
+  background: var(--wv-bg);
+  color: #ffffff;
+  font-family: var(--lb-font-body);
+  font-size: 15px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.lb-modal__btn:hover { transform: translateY(-1px); filter: brightness(1.20); }

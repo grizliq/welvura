@@ -1,0 +1,35 @@
+/* Welvura — тёмная тема (семантика).
+   Подключать после tokens.css */
+
+:root {
+  /* Роли темы */
+  --wv-bg:            #0A0F1E;   /* фон страницы */
+  --wv-surface:       #141B2E;   /* карточки, панели, футер */
+  --wv-surface-2:     #1A2340;   /* второй уровень (шапка) */
+  --wv-panel:         #202335;   /* панели-подложки */
+  --wv-text:          #FFFFFF;
+  --wv-text-soft:     #ABB2DE;
+  --wv-text-muted:    #6C779E;
+
+  /* Бренд-акценты Welvura */
+  --wv-accent:        #9F8FF8;   /* главный фиолет (заголовок «WELVURA») */
+  --wv-accent-hot:    #A34EF4;   /* насыщенный фиолет для hover/gradient */
+  --wv-cta:           #3566FB;   /* синяя кнопка */
+  --wv-cta-hot:       #586EBF;
+  --wv-cookie:        #E8C86A;   /* печенька / золото */
+  --wv-cookie-deep:   #FFB300;   /* глубже, для тени */
+  --wv-chip:          #683529;   /* капли на печеньке (шоколад) */
+
+  /* Совместимость со старой LB-разметкой (lb-c-*) */
+  --lb-c-2589FF:      #9F8FF8;   /* был primary blue → теперь violet */
+  --lb-c-25475C:      #ABB2DE;
+  --lb-c-111117:      #FFFFFF;   /* тёмный текст LB → в тёмной теме белый */
+  --lb-c-FFFFFF:      #FFFFFF;
+  --lb-c-5A7EA8:      #6C779E;
+  --lb-c-2A7AD9:      #A34EF4;
+  --lb-c-262D36:      #202335;
+  --lb-c-06060C:      #0A0F1E;
+  --lb-c-09091C:      #141B2E;
+
+  color-scheme: dark;
+}
